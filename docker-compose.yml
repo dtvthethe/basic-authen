@@ -1,0 +1,19 @@
+version: "3"
+services:
+  sitea:
+    image: nginx
+    ports:
+      - "2812:80"
+    volumes:
+      - ./site-a/html:/usr/share/nginx/html:ro
+      - ./site-a/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./site-a/.htpasswd:/etc/nginx/.htpasswd:ro
+
+  siteb:
+    image: nginx
+    ports:
+      - "2813:80"
+    volumes:
+      - ./site-b/html:/usr/share/nginx/html:ro
+      - ./site-b/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./site-b/.htpasswd:/etc/nginx/.htpasswd:ro
